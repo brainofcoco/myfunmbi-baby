@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be My Valentine</title>
+    <link rel="stylesheet" href="css/valentine.css" />
+  </head>
+  <body>
+    <div id="valentineQuestion"><b>WIll you be my VAL? FUNBAYBAY 🥹💕</b></div>
+    <button class="answerButton" onclick="location.href='thankyou.html'">
+      Yes
+    </button>
+    <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
+    <br />
+    <img
+      src="dog-begging-removebg-preview.png"
+      height="498px"
+      width="150px"
+      alt="dog sitting down"
+      class="responsive"
+      style="
+        display: block;
+        margin: auto;
+        filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.5));
+      "
+    />
+
+    <script>
+      document
+        .getElementById('noButton')
+        .addEventListener('click', function () {
+          var yesButton = document.querySelector(
+            'button[onclick*="thankyou.html"]'
+          );
+          var currentFontSize = parseInt(
+            window.getComputedStyle(yesButton).fontSize
+          );
+          yesButton.style.fontSize = currentFontSize + 10 + 'px'; // Increase font size by 5px
+        });
+    </script>
+  </body>
+</html>

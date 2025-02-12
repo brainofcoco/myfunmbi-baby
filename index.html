@@ -3,30 +3,158 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Be My Valentine</title>
+    <title>Secret Entry</title>
     <link rel="stylesheet" href="css/valentine.css" />
+    <style>
+      /* Page Background */
+      body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #772922, #772922);
+        text-align: center;
+        color: white;
+        padding: 20px;
+      }
+
+      /* Centering the question */
+      #valentineQuestion {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      /* Button Styles */
+      .answerButton {
+        background-color: #ff6f61;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin: 10px;
+      }
+
+      .answerButton:hover {
+        background-color: #ff5c8e;
+        transform: scale(1.05);
+      }
+
+      #passwordSection {
+        display: none;
+        margin-top: 20px;
+      }
+
+      /* Input Field Styles */
+      input[type='password'] {
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 10px;
+        border: 2px solid #ff5c8e;
+        outline: none;
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+      }
+
+      input[type='password']:focus {
+        border-color: #ff6f61;
+        box-shadow: 0 0 5px rgba(255, 105, 135, 0.8);
+      }
+
+      /* Submit Button Styling */
+      button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #ff5c8e;
+        transform: scale(1.05);
+      }
+
+      /* Error Message */
+      #errorMessage {
+        color: #ff5c8e;
+        font-size: 1.1rem;
+        display: none;
+      }
+
+      /* Input Container */
+      .input-container {
+        margin-top: 20px;
+      }
+
+      /* Responsive design */
+      @media (max-width: 600px) {
+        .answerButton {
+          width: 80%;
+        }
+
+        input[type='password'] {
+          width: 80%;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
-    <button class="answerButton" onclick="location.href='thankyou.html'">
-      Yes
-    </button>
+    <div id="valentineQuestion"><b>Are you my babe? 🥹💕</b></div>
+
+    <button class="answerButton" id="yesButton">Yes</button>
     <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
+
     <br />
-    <img src="please.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
+
+    <div id="passwordSection" class="input-container">
+      <p>
+        What's the magic word we use so people don’t hear what we discuss? 🫢
+      </p>
+      <input
+        type="password"
+        id="passwordInput"
+        placeholder="Enter magic word"
+      />
+      <button onclick="checkPassword()">Submit</button>
+      <p id="errorMessage" style="color: red; display: none">
+        Wrong magic word! 😤
+      </p>
+    </div>
 
     <script>
       document
-        .getElementById("noButton")
-        .addEventListener("click", function () {
-          var yesButton = document.querySelector(
-            'button[onclick*="thankyou.html"]'
-          );
+        .getElementById('yesButton')
+        .addEventListener('click', function () {
+          document.getElementById('passwordSection').style.display = 'block';
+        });
+
+      document
+        .getElementById('noButton')
+        .addEventListener('click', function () {
+          var yesButton = document.getElementById('yesButton');
           var currentFontSize = parseInt(
             window.getComputedStyle(yesButton).fontSize
           );
-          yesButton.style.fontSize = currentFontSize + 10 + "px"; // Increase font size by 5px
+          yesButton.style.fontSize = currentFontSize + 10 + 'px'; // Increase font size
         });
+
+      function checkPassword() {
+        var password = document
+          .getElementById('passwordInput')
+          .value.toLowerCase();
+        if (password === 'ogirilate' || password === 'ogirilati') {
+          window.location.href = 'valentine.html'; // Redirect to Valentine proposal page
+        } else {
+          document.getElementById('errorMessage').style.display = 'block';
+        }
+      }
     </script>
   </body>
 </html>
