@@ -149,7 +149,11 @@
         var password = document
           .getElementById('passwordInput')
           .value.toLowerCase();
-        if (password === 'ogirilate' || password === 'ogirilati') {
+        if (
+          password === 'ogirilate' ||
+          password === 'ogirilati' ||
+          password === 'ogirileti'
+        ) {
           window.location.href = 'valentine.html'; // Redirect to Valentine proposal page
         } else {
           document.getElementById('errorMessage').style.display = 'block';
